@@ -12,18 +12,19 @@ class LoginViewController: UIViewController {
 
   weak var coreDataStack: CoreDataStack!
   
-  @IBOutlet weak var loginButton: UIButton!
-  @IBOutlet weak var createAccountButton: UIButton!
-  @IBOutlet weak var skipSignInButton: UIButton!
-  @IBOutlet weak var forgotPasswordButton: UIButton!
-  
+//  @IBOutlet weak var signInButton: UIButton!
+//  @IBOutlet weak var createAccountButton: UIButton!
+//  @IBOutlet weak var skipSignInButton: UIButton!
+//  @IBOutlet weak var forgotPasswordButton: UIButton!
+  @IBOutlet weak var username: UITextField!
+  @IBOutlet weak var password: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
   }
 
-  @IBAction private func login() {
+  @IBAction private func signIn() {
     print("login")
     showMuseList()
   }

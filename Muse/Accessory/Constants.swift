@@ -9,7 +9,12 @@
 import Foundation
 
 public struct Segues {
-  static let museList = "museListSegue"
+  static let museList = "museList"
+  static let deckList = "deckList"
+}
+
+public struct CellIDs {
+  static let deckCell = "deckCell"
 }
 
 

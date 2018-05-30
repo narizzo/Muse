@@ -18,10 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = SignInVC()
-    window?.makeKeyAndVisible()
+    guard let window = window else {
+      fatalError("There is no window")
+    }
+    window.rootViewController = SignInVC()
+    window.makeKeyAndVisible()
     
-    if let signInVC = window?.rootViewController as? SignInVC {
+    if let signInVC = window.rootViewController as? SignInVC {
       signInVC.coreDataStack = coreDataStack
     }
     listenForFatalCoreDataNotifications()

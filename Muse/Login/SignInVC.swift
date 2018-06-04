@@ -27,31 +27,50 @@ class SignInVC: UIViewController {
     turnOffMasksForUIObjects()
     addSubviews()
     activateConstraints()
-    configureButtonActions()
     
+    setupMuseLabel()
+    setupUsernameField()
+    setupPasswordField()
+    setupSignInButton()
+    setupCreateAccountButton()
+    setupSkipSignInButton()
+    setupForgotCredentialsButton()
+  }
+  
+  private func setupMuseLabel() {
     museLabel.text = "Muse"
     museLabel.textAlignment = .center
     museLabel.font = museLabel.font.withSize(64)
-    
+  }
+  
+  private func setupUsernameField() {
     usernameField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: Theme.colors.lightGray])
     usernameField.backgroundColor = UIColor.orange
     usernameField.returnKeyType = .next
     usernameField.textColor = UIColor.black
     usernameField.font = usernameField.font?.withSize(30)
-    
+  }
+  
+  private func setupPasswordField() {
     passwordField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: Theme.colors.lightGray])
     passwordField.isSecureTextEntry = true
     passwordField.backgroundColor = UIColor.orange
     passwordField.returnKeyType = .done
     passwordField.textColor = UIColor.black
     passwordField.font = usernameField.font?.withSize(30)
-    
+  }
+  
+  private func setupSignInButton() {
     signInButton.setTitle("Sign In", for: .normal)
     signInButton.titleLabel?.textAlignment = .center
     signInButton.titleLabel?.font = signInButton.titleLabel?.font.withSize(35)
     signInButton.setTitleColor(UIColor.black, for: .normal)
     signInButton.backgroundColor = UIColor.orange
     
+    signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+  }
+  
+  private func setupCreateAccountButton() {
     createAccountButton.setTitle("Create Account", for: .normal)
     createAccountButton.titleLabel?.textAlignment = .center
     createAccountButton.titleLabel?.font = signInButton.titleLabel?.font.withSize(35)
@@ -59,6 +78,10 @@ class SignInVC: UIViewController {
     createAccountButton.setTitleColor(UIColor.black, for: .normal)
     createAccountButton.backgroundColor = UIColor.orange
     
+    createAccountButton.addTarget(self, action: #selector(createAccount), for: .touchUpInside)
+  }
+  
+  private func setupSkipSignInButton() {
     skipSignInButton.setTitle("Skip Sign In", for: .normal)
     skipSignInButton.titleLabel?.textAlignment = .center
     skipSignInButton.titleLabel?.font = signInButton.titleLabel?.font.withSize(35)
@@ -66,12 +89,18 @@ class SignInVC: UIViewController {
     skipSignInButton.setTitleColor(UIColor.black, for: .normal)
     skipSignInButton.backgroundColor = UIColor.orange
     
+    skipSignInButton.addTarget(self, action: #selector(skipSignIn), for: .touchUpInside)
+  }
+  
+  private func setupForgotCredentialsButton() {
     forgotCredentialsButton.setTitle("Forgot Username or Password", for: .normal)
     forgotCredentialsButton.titleLabel?.textAlignment = .center
     forgotCredentialsButton.titleLabel?.font = signInButton.titleLabel?.font.withSize(35)
     forgotCredentialsButton.titleLabel?.adjustsFontSizeToFitWidth = true
     forgotCredentialsButton.setTitleColor(UIColor.black, for: .normal)
     forgotCredentialsButton.backgroundColor = UIColor.orange
+    
+    forgotCredentialsButton.addTarget(self, action: #selector(forgotCredentials), for: .touchUpInside)
   }
   
   private func turnOffMasksForUIObjects() {
@@ -133,12 +162,6 @@ class SignInVC: UIViewController {
       ])
   }
   
-  private func configureButtonActions() {
-    signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-    createAccountButton.addTarget(self, action: #selector(createAccount), for: .touchUpInside)
-    skipSignInButton.addTarget(self, action: #selector(skipSignIn), for: .touchUpInside)
-    forgotCredentialsButton.addTarget(self, action: #selector(forgotCredentials), for: .touchUpInside)
-  }
   
   @objc private func signIn() {
     print("sign in")

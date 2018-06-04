@@ -24,6 +24,9 @@ class DeckTableViewCell: UITableViewCell {
     
     countLabel.textAlignment = .center
     
+    nameLabel.backgroundColor = UIColor.red
+    countLabel.backgroundColor = UIColor.green
+    
     contentView.addSubview(nameLabel)
     contentView.addSubview(countLabel)
     
@@ -32,11 +35,11 @@ class DeckTableViewCell: UITableViewCell {
       nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       nameLabel.heightAnchor.constraint(equalToConstant: 44),
       nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 4/5),
-      
-      countLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      countLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-      countLabel.heightAnchor.constraint(equalToConstant: 44),
-      countLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/5),
+
+//      countLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+//      countLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+//      countLabel.heightAnchor.constraint(equalToConstant: 44),
+//      countLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/5),
       ])
   }
   

@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01BE537620BA233D006C992F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE537520BA233D006C992F /* AppDelegate.swift */; };
-		01BE537820BA233D006C992F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE537720BA233D006C992F /* ViewController.swift */; };
-		01BE537B20BA233D006C992F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BE537920BA233D006C992F /* Main.storyboard */; };
-		01BE537E20BA233D006C992F /* Muse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01BE537C20BA233D006C992F /* Muse.xcdatamodeld */; };
-		01BE538020BA233E006C992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BE537F20BA233E006C992F /* Assets.xcassets */; };
-		01BE538320BA233E006C992F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BE538120BA233E006C992F /* LaunchScreen.storyboard */; };
+		01787FFA20BF27250043074F /* NSFRCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01787FF920BF27250043074F /* NSFRCDelegate.swift */; };
+		01787FFD20BF3D3B0043074F /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */; };
 		01BE538E20BA233F006C992F /* MuseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE538D20BA233F006C992F /* MuseTests.swift */; };
 		01BE539920BA233F006C992F /* MuseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE539820BA233F006C992F /* MuseUITests.swift */; };
+		01CCEF4120BDB3B6008FAEF9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEF4020BDB3B6008FAEF9 /* Theme.swift */; };
+		01D1FB1320BC803900A6C400 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1120BC803900A6C400 /* Constants.swift */; };
+		01D1FB1420BC803900A6C400 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1220BC803900A6C400 /* Utility.swift */; };
+		01D1FB2620BC804C00A6C400 /* MuseListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1620BC804C00A6C400 /* MuseListTableViewController.swift */; };
+		01D1FB2720BC804C00A6C400 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1820BC804C00A6C400 /* CoreDataStack.swift */; };
+		01D1FB2820BC804C00A6C400 /* Muse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1920BC804C00A6C400 /* Muse.xcdatamodeld */; };
+		01D1FB2920BC804C00A6C400 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1C20BC804C00A6C400 /* SignInVC.swift */; };
+		01D1FB2A20BC804C00A6C400 /* DeckTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1E20BC804C00A6C400 /* DeckTableViewController.swift */; };
+		01D1FB2B20BC804C00A6C400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D1FB2020BC804C00A6C400 /* Assets.xcassets */; };
+		01D1FB2C20BC804C00A6C400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D1FB2120BC804C00A6C400 /* LaunchScreen.storyboard */; };
+		01D1FB2E20BC804C00A6C400 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB2520BC804C00A6C400 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +42,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01787FF920BF27250043074F /* NSFRCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFRCDelegate.swift; sourceTree = "<group>"; };
+		01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		01BE537220BA233D006C992F /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muse.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		01BE537520BA233D006C992F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01BE537720BA233D006C992F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		01BE537A20BA233D006C992F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		01BE537D20BA233D006C992F /* Muse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Muse.xcdatamodel; sourceTree = "<group>"; };
-		01BE537F20BA233E006C992F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		01BE538220BA233E006C992F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01BE538420BA233E006C992F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01BE538920BA233F006C992F /* MuseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01BE538920BA233F006C992F /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Muse.app; path = MuseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BE538D20BA233F006C992F /* MuseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseTests.swift; sourceTree = "<group>"; };
 		01BE538F20BA233F006C992F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01BE539420BA233F006C992F /* MuseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BE539820BA233F006C992F /* MuseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseUITests.swift; sourceTree = "<group>"; };
 		01BE539A20BA233F006C992F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01CCEF4020BDB3B6008FAEF9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		01D1FB1120BC803900A6C400 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		01D1FB1220BC803900A6C400 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		01D1FB1620BC804C00A6C400 /* MuseListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuseListTableViewController.swift; sourceTree = "<group>"; };
+		01D1FB1820BC804C00A6C400 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		01D1FB1A20BC804C00A6C400 /* Muse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Muse.xcdatamodel; sourceTree = "<group>"; };
+		01D1FB1C20BC804C00A6C400 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		01D1FB1E20BC804C00A6C400 /* DeckTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTableViewController.swift; sourceTree = "<group>"; };
+		01D1FB2020BC804C00A6C400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01D1FB2220BC804C00A6C400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01D1FB2520BC804C00A6C400 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01787FFB20BF3D1F0043074F /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */,
+			);
+			path = "Table Cells";
+			sourceTree = "<group>";
+		};
 		01BE536920BA233D006C992F = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				01BE537220BA233D006C992F /* Muse.app */,
-				01BE538920BA233F006C992F /* MuseTests.xctest */,
+				01BE538920BA233F006C992F /* Muse.app */,
 				01BE539420BA233F006C992F /* MuseUITests.xctest */,
 			);
 			name = Products;
@@ -99,13 +121,14 @@
 		01BE537420BA233D006C992F /* Muse */ = {
 			isa = PBXGroup;
 			children = (
-				01BE537520BA233D006C992F /* AppDelegate.swift */,
-				01BE537720BA233D006C992F /* ViewController.swift */,
-				01BE537920BA233D006C992F /* Main.storyboard */,
-				01BE537F20BA233E006C992F /* Assets.xcassets */,
-				01BE538120BA233E006C992F /* LaunchScreen.storyboard */,
+				01D1FB2520BC804C00A6C400 /* AppDelegate.swift */,
+				01D1FB1720BC804C00A6C400 /* Data Model */,
+				01D1FB1B20BC804C00A6C400 /* Login */,
+				01D1FB1D20BC804C00A6C400 /* Muse Deck List */,
+				01D1FB1520BC804C00A6C400 /* MuseList */,
+				01D1FB1F20BC804C00A6C400 /* Project Files */,
+				01D1FB1020BC803900A6C400 /* Accessory */,
 				01BE538420BA233E006C992F /* Info.plist */,
-				01BE537C20BA233D006C992F /* Muse.xcdatamodeld */,
 			);
 			path = Muse;
 			sourceTree = "<group>";
@@ -126,6 +149,60 @@
 				01BE539A20BA233F006C992F /* Info.plist */,
 			);
 			path = MuseUITests;
+			sourceTree = "<group>";
+		};
+		01D1FB1020BC803900A6C400 /* Accessory */ = {
+			isa = PBXGroup;
+			children = (
+				01D1FB1120BC803900A6C400 /* Constants.swift */,
+				01D1FB1220BC803900A6C400 /* Utility.swift */,
+				01CCEF4020BDB3B6008FAEF9 /* Theme.swift */,
+			);
+			path = Accessory;
+			sourceTree = "<group>";
+		};
+		01D1FB1520BC804C00A6C400 /* MuseList */ = {
+			isa = PBXGroup;
+			children = (
+				01D1FB1620BC804C00A6C400 /* MuseListTableViewController.swift */,
+			);
+			path = MuseList;
+			sourceTree = "<group>";
+		};
+		01D1FB1720BC804C00A6C400 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				01D1FB1820BC804C00A6C400 /* CoreDataStack.swift */,
+				01D1FB1920BC804C00A6C400 /* Muse.xcdatamodeld */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		01D1FB1B20BC804C00A6C400 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				01D1FB1C20BC804C00A6C400 /* SignInVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		01D1FB1D20BC804C00A6C400 /* Muse Deck List */ = {
+			isa = PBXGroup;
+			children = (
+				01D1FB1E20BC804C00A6C400 /* DeckTableViewController.swift */,
+				01787FF920BF27250043074F /* NSFRCDelegate.swift */,
+				01787FFB20BF3D1F0043074F /* Table Cells */,
+			);
+			path = "Muse Deck List";
+			sourceTree = "<group>";
+		};
+		01D1FB1F20BC804C00A6C400 /* Project Files */ = {
+			isa = PBXGroup;
+			children = (
+				01D1FB2020BC804C00A6C400 /* Assets.xcassets */,
+				01D1FB2120BC804C00A6C400 /* LaunchScreen.storyboard */,
+			);
+			path = "Project Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +240,7 @@
 			);
 			name = MuseTests;
 			productName = MuseTests;
-			productReference = 01BE538920BA233F006C992F /* MuseTests.xctest */;
+			productReference = 01BE538920BA233F006C992F /* Muse.app */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		01BE539320BA233F006C992F /* MuseUITests */ = {
@@ -232,9 +309,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01BE538320BA233E006C992F /* LaunchScreen.storyboard in Resources */,
-				01BE538020BA233E006C992F /* Assets.xcassets in Resources */,
-				01BE537B20BA233D006C992F /* Main.storyboard in Resources */,
+				01D1FB2C20BC804C00A6C400 /* LaunchScreen.storyboard in Resources */,
+				01D1FB2B20BC804C00A6C400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +335,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01BE537820BA233D006C992F /* ViewController.swift in Sources */,
-				01BE537620BA233D006C992F /* AppDelegate.swift in Sources */,
-				01BE537E20BA233D006C992F /* Muse.xcdatamodeld in Sources */,
+				01CCEF4120BDB3B6008FAEF9 /* Theme.swift in Sources */,
+				01D1FB2E20BC804C00A6C400 /* AppDelegate.swift in Sources */,
+				01D1FB2920BC804C00A6C400 /* SignInVC.swift in Sources */,
+				01D1FB1420BC803900A6C400 /* Utility.swift in Sources */,
+				01D1FB2A20BC804C00A6C400 /* DeckTableViewController.swift in Sources */,
+				01787FFA20BF27250043074F /* NSFRCDelegate.swift in Sources */,
+				01D1FB2820BC804C00A6C400 /* Muse.xcdatamodeld in Sources */,
+				01D1FB2620BC804C00A6C400 /* MuseListTableViewController.swift in Sources */,
+				01787FFD20BF3D3B0043074F /* DeckTableViewCell.swift in Sources */,
+				01D1FB1320BC803900A6C400 /* Constants.swift in Sources */,
+				01D1FB2720BC804C00A6C400 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,18 +381,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		01BE537920BA233D006C992F /* Main.storyboard */ = {
+		01D1FB2120BC804C00A6C400 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				01BE537A20BA233D006C992F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		01BE538120BA233E006C992F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01BE538220BA233E006C992F /* Base */,
+				01D1FB2220BC804C00A6C400 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -444,7 +520,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.AdriftingUp.Muse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -462,7 +538,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.AdriftingUp.Muse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -590,12 +666,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		01BE537C20BA233D006C992F /* Muse.xcdatamodeld */ = {
+		01D1FB1920BC804C00A6C400 /* Muse.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				01BE537D20BA233D006C992F /* Muse.xcdatamodel */,
+				01D1FB1A20BC804C00A6C400 /* Muse.xcdatamodel */,
 			);
-			currentVersion = 01BE537D20BA233D006C992F /* Muse.xcdatamodel */;
+			currentVersion = 01D1FB1A20BC804C00A6C400 /* Muse.xcdatamodel */;
 			path = Muse.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

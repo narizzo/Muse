@@ -19,29 +19,43 @@ class DeckTableViewCell: UITableViewCell {
     nameLabel.translatesAutoresizingMaskIntoConstraints = false
     countLabel.translatesAutoresizingMaskIntoConstraints = false
     
-    nameLabel = UILabel(frame: frame)
-    countLabel = UILabel(frame: frame)
-    
-    countLabel.textAlignment = .center
-    
-    nameLabel.backgroundColor = UIColor.red
-    countLabel.backgroundColor = UIColor.green
+    setupLabels()
     
     contentView.addSubview(nameLabel)
     contentView.addSubview(countLabel)
     
+    
     NSLayoutConstraint.activate([
-      nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      nameLabel.heightAnchor.constraint(equalToConstant: 44),
-      nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 4/5),
+      nameLabel.topAnchor.constraint(equalTo: self.topAnchor),
+      nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      nameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 4/5),
 
-//      countLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-//      countLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-//      countLabel.heightAnchor.constraint(equalToConstant: 44),
-//      countLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/5),
+      countLabel.topAnchor.constraint(equalTo: self.topAnchor),
+      countLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      countLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+      countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
       ])
   }
+  
+  private func setupLabels() {
+    // Text
+    countLabel.textAlignment = .center
+    countLabel.text = "0"
+    
+    // Colors
+    /*
+    nameLabel.backgroundColor = UIColor.black
+    nameLabel.textColor = UIColor.white
+    
+    countLabel.backgroundColor = UIColor.black
+    countLabel.textColor = UIColor.white
+ */
+  }
+  
+//  override func layoutSubviews() {
+//    super.layoutSubviews()
+//  }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")

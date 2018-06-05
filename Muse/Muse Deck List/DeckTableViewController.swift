@@ -21,7 +21,7 @@ class DeckTableViewController: UITableViewController {
     let fetchedResultsController = NSFetchedResultsController(
       fetchRequest: fetchRequest,
       managedObjectContext: coreDataStack.moc,
-      sectionNameKeyPath: #keyPath(Deck.name),
+      sectionNameKeyPath: nil,
       cacheName: "deckCache")
     fetchedResultsController.delegate = self
     return fetchedResultsController
@@ -29,8 +29,9 @@ class DeckTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeck))
-    navigationItem.setRightBarButton(addBarButton, animated: true)
+    
+    setupBarButtons()
+    
     navigationItem.title = "Decks"
     tableView.backgroundColor = UIColor.black
     
@@ -42,6 +43,11 @@ class DeckTableViewController: UITableViewController {
     fetchData()
   }
   
+  private func setupBarButtons() {
+    let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeck))
+    navigationItem.setRightBarButton(addBarButton, animated: true)
+  }
+  
   private func fetchData() {
     do {
       try fetchedResultsController.performFetch()
@@ -51,15 +57,30 @@ class DeckTableViewController: UITableViewController {
   }
   
   @objc private func addDeck() {
-    let newDeck = Deck(entity: Deck.entity(), insertInto: coreDataStack.moc)
-    newDeck.name = "newDeck"
-    newDeck.creationDate = Date()
+    let alert = UIAlertController(title: "Add Deck", message: "Enter the deck name", preferredStyle: .alert)
+    alert.addTextField { textField in
+      textField.placeholder = "Deck name"
+    }
     
-    controllerWillChangeContent(fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>)
-    let indexPath = IndexPath(row: 0, section: 0)
-    tableView.insertRows(at: [indexPath], with: .automatic)
-    controllerDidChangeContent(fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>)
-    coreDataStack.saveContext()
+    let saveAction = UIAlertAction(title: "Save", style: .default) {
+      [unowned self] action in
+      
+      guard let name = alert.textFields?.first else {
+        return
+      }
+      
+      self.controllerWillChangeContent(self.fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>)
+      let newDeck = Deck(entity: Deck.entity(), insertInto: self.coreDataStack.moc)
+      newDeck.name = name.text
+      newDeck.creationDate = Date()
+      self.coreDataStack.saveContext()
+      self.controllerDidChangeContent(self.fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>)
+      
+    }
+    
+    alert.addAction(saveAction)
+    alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+    present(alert, animated: true)
   }
   
   // MARK: - Table view data source
@@ -70,17 +91,14 @@ class DeckTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let count = fetchedResultsController.fetchedObjects?.count {
-      print("number of rows in section: \(count)")
       return count
     } else {
-      print("number of rows in section is 0")
       return 0
     }
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    print("cell for row at")
-    let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.deckCell, for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.deckCell) as! DeckTableViewCell
     configure(cell, for: indexPath)
     return cell
   }
@@ -97,7 +115,6 @@ class DeckTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    performSegue(withIdentifier: Segues.museList, sender: nil)
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
@@ -114,15 +131,17 @@ class DeckTableViewController: UITableViewController {
    }
   
   
-   // Override to support editing the table view.
-   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-   if editingStyle == .delete {
-   // Delete the row from the data source
-   tableView.deleteRows(at: [indexPath], with: .fade)
-   } else if editingStyle == .insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-   }
-   }
+  // Override to support editing the table view.
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      
+      controllerWillChangeContent(self.fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>)
+      let deck = fetchedResultsController.object(at: indexPath)
+      self.coreDataStack.moc.delete(deck)
+      self.coreDataStack.saveContext()
+      controllerDidChangeContent(self.fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>)
+    }
+  }
   
   /*
    // Override to support rearranging the table view.
@@ -136,16 +155,6 @@ class DeckTableViewController: UITableViewController {
    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
    // Return false if you do not want the item to be re-orderable.
    return true
-   }
-   */
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
    }
    */
   

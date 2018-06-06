@@ -16,9 +16,8 @@ class MuseCollectionViewCell: UICollectionViewCell {
     super.init(frame: frame)
     
     museLabel.translatesAutoresizingMaskIntoConstraints = false
-    
     contentView.addSubview(museLabel)
-    
+    museLabel.textAlignment = .center
     activateConstraints()
     setupMuseLabel()
   }
@@ -32,11 +31,11 @@ class MuseCollectionViewCell: UICollectionViewCell {
       museLabel.topAnchor.constraint(equalTo: self.topAnchor),
       museLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
       museLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-      museLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      museLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
       ])
   }
   
   private func setupMuseLabel() {
-    museLabel.font = museLabel.font.withSize(30)
+    museLabel.font = museLabel.font.withSize(44)
   }
 }

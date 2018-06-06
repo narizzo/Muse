@@ -107,6 +107,12 @@ class DeckTableViewController: UITableViewController {
     let deck = fetchedResultsController.object(at: indexPath)
     if let cell = cell as? DeckTableViewCell {
       cell.textLabel?.text = deck.name
+      if let count = deck.muses?.count {
+        cell.countLabel.text = "\(count)"
+      } else {
+        cell.countLabel.text = "0"
+      }
+      
     }
   }
   
@@ -123,6 +129,7 @@ class DeckTableViewController: UITableViewController {
     let museVC = MuseViewController()
     museVC.selectedDeck = deck
     museVC.coreDataStack = coreDataStack
+    
     navigationController?.pushViewController(museVC, animated: true)
   }
   

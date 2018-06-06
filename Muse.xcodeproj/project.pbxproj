@@ -14,7 +14,7 @@
 		01CCEF4120BDB3B6008FAEF9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEF4020BDB3B6008FAEF9 /* Theme.swift */; };
 		01D1FB1320BC803900A6C400 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1120BC803900A6C400 /* Constants.swift */; };
 		01D1FB1420BC803900A6C400 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1220BC803900A6C400 /* Utility.swift */; };
-		01D1FB2620BC804C00A6C400 /* MuseListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1620BC804C00A6C400 /* MuseListTableViewController.swift */; };
+		01D1FB2620BC804C00A6C400 /* MuseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1620BC804C00A6C400 /* MuseViewController.swift */; };
 		01D1FB2720BC804C00A6C400 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1820BC804C00A6C400 /* CoreDataStack.swift */; };
 		01D1FB2820BC804C00A6C400 /* Muse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1920BC804C00A6C400 /* Muse.xcdatamodeld */; };
 		01D1FB2920BC804C00A6C400 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB1C20BC804C00A6C400 /* SignInVC.swift */; };
@@ -22,6 +22,7 @@
 		01D1FB2B20BC804C00A6C400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D1FB2020BC804C00A6C400 /* Assets.xcassets */; };
 		01D1FB2C20BC804C00A6C400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D1FB2120BC804C00A6C400 /* LaunchScreen.storyboard */; };
 		01D1FB2E20BC804C00A6C400 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1FB2520BC804C00A6C400 /* AppDelegate.swift */; };
+		01DC695020C8364100D6FA76 /* MuseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DC694F20C8364100D6FA76 /* MuseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,7 @@
 		01CCEF4020BDB3B6008FAEF9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		01D1FB1120BC803900A6C400 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01D1FB1220BC803900A6C400 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		01D1FB1620BC804C00A6C400 /* MuseListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuseListTableViewController.swift; sourceTree = "<group>"; };
+		01D1FB1620BC804C00A6C400 /* MuseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuseViewController.swift; sourceTree = "<group>"; };
 		01D1FB1820BC804C00A6C400 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		01D1FB1A20BC804C00A6C400 /* Muse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Muse.xcdatamodel; sourceTree = "<group>"; };
 		01D1FB1C20BC804C00A6C400 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		01D1FB2020BC804C00A6C400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01D1FB2220BC804C00A6C400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01D1FB2520BC804C00A6C400 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		01DC694F20C8364100D6FA76 /* MuseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,14 +92,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01787FFB20BF3D1F0043074F /* Table Cells */ = {
-			isa = PBXGroup;
-			children = (
-				01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */,
-			);
-			path = "Table Cells";
-			sourceTree = "<group>";
-		};
 		01BE536920BA233D006C992F = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +158,8 @@
 		01D1FB1520BC804C00A6C400 /* MuseList */ = {
 			isa = PBXGroup;
 			children = (
-				01D1FB1620BC804C00A6C400 /* MuseListTableViewController.swift */,
+				01D1FB1620BC804C00A6C400 /* MuseViewController.swift */,
+				01DC694F20C8364100D6FA76 /* MuseCollectionViewCell.swift */,
 			);
 			path = MuseList;
 			sourceTree = "<group>";
@@ -191,7 +186,7 @@
 			children = (
 				01D1FB1E20BC804C00A6C400 /* DeckTableViewController.swift */,
 				01787FF920BF27250043074F /* NSFRCDelegate.swift */,
-				01787FFB20BF3D1F0043074F /* Table Cells */,
+				01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */,
 			);
 			path = "Muse Deck List";
 			sourceTree = "<group>";
@@ -339,10 +334,11 @@
 				01D1FB2E20BC804C00A6C400 /* AppDelegate.swift in Sources */,
 				01D1FB2920BC804C00A6C400 /* SignInVC.swift in Sources */,
 				01D1FB1420BC803900A6C400 /* Utility.swift in Sources */,
+				01DC695020C8364100D6FA76 /* MuseCollectionViewCell.swift in Sources */,
 				01D1FB2A20BC804C00A6C400 /* DeckTableViewController.swift in Sources */,
 				01787FFA20BF27250043074F /* NSFRCDelegate.swift in Sources */,
 				01D1FB2820BC804C00A6C400 /* Muse.xcdatamodeld in Sources */,
-				01D1FB2620BC804C00A6C400 /* MuseListTableViewController.swift in Sources */,
+				01D1FB2620BC804C00A6C400 /* MuseViewController.swift in Sources */,
 				01787FFD20BF3D3B0043074F /* DeckTableViewCell.swift in Sources */,
 				01D1FB1320BC803900A6C400 /* Constants.swift in Sources */,
 				01D1FB2720BC804C00A6C400 /* CoreDataStack.swift in Sources */,

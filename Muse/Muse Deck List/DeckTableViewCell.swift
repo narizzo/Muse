@@ -19,18 +19,21 @@ class DeckTableViewCell: UITableViewCell {
     nameLabel.translatesAutoresizingMaskIntoConstraints = false
     countLabel.translatesAutoresizingMaskIntoConstraints = false
     
-    setupLabels()
     
     contentView.addSubview(nameLabel)
     contentView.addSubview(countLabel)
     
-    
+    activateConstraints()
+    setupLabels()
+  }
+  
+  private func activateConstraints() {
     NSLayoutConstraint.activate([
       nameLabel.topAnchor.constraint(equalTo: self.topAnchor),
       nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
       nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
       nameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 4/5),
-
+      
       countLabel.topAnchor.constraint(equalTo: self.topAnchor),
       countLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
       countLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor),

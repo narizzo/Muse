@@ -116,14 +116,14 @@ class DeckTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    showMuseListTableView(for: fetchedResultsController.object(at: indexPath) as Deck)
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == Segues.museList {
-      if let destination = segue.destination as? MuseListTableViewController {
-        destination.selectedDeck = selectedDeck
-      }
-    }
+  private func showMuseListTableView(for deck: Deck) {
+    let museVC = MuseViewController()
+    museVC.selectedDeck = deck
+    museVC.coreDataStack = coreDataStack
+    navigationController?.pushViewController(museVC, animated: true)
   }
   
    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

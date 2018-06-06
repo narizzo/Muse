@@ -164,17 +164,14 @@ class SignInVC: UIViewController {
   
   
   @objc private func signIn() {
-    print("sign in")
     showDeckTableVC()
   }
   
   @objc private func createAccount() {
-    print("create account")
     showDeckTableVC()
   }
   
   @objc private func skipSignIn() {
-    print("skip sign in")
     showDeckTableVC()
   }
   

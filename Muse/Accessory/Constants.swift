@@ -15,6 +15,7 @@ public struct Segues {
 
 public struct CellIDs {
   static let deckCell = "deckCell"
+  static let museCell = "museCell"
 }
 
 

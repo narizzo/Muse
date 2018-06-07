@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0124B50D20C9902A0019528E /* CollectionArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124B50C20C9902A0019528E /* CollectionArrows.swift */; };
+		0124B50F20C990BD0019528E /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124B50E20C990BD0019528E /* Arrow.swift */; };
 		01787FFA20BF27250043074F /* NSFRCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01787FF920BF27250043074F /* NSFRCDelegate.swift */; };
 		01787FFD20BF3D3B0043074F /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */; };
 		01BE538E20BA233F006C992F /* MuseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE538D20BA233F006C992F /* MuseTests.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0124B50C20C9902A0019528E /* CollectionArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionArrows.swift; sourceTree = "<group>"; };
+		0124B50E20C990BD0019528E /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		01787FF920BF27250043074F /* NSFRCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFRCDelegate.swift; sourceTree = "<group>"; };
 		01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		01BE537220BA233D006C992F /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +164,8 @@
 			children = (
 				01D1FB1620BC804C00A6C400 /* MuseViewController.swift */,
 				01DC694F20C8364100D6FA76 /* MuseCollectionViewCell.swift */,
+				0124B50C20C9902A0019528E /* CollectionArrows.swift */,
+				0124B50E20C990BD0019528E /* Arrow.swift */,
 			);
 			path = MuseList;
 			sourceTree = "<group>";
@@ -340,6 +346,8 @@
 				01D1FB2820BC804C00A6C400 /* Muse.xcdatamodeld in Sources */,
 				01D1FB2620BC804C00A6C400 /* MuseViewController.swift in Sources */,
 				01787FFD20BF3D3B0043074F /* DeckTableViewCell.swift in Sources */,
+				0124B50D20C9902A0019528E /* CollectionArrows.swift in Sources */,
+				0124B50F20C990BD0019528E /* Arrow.swift in Sources */,
 				01D1FB1320BC803900A6C400 /* Constants.swift in Sources */,
 				01D1FB2720BC804C00A6C400 /* CoreDataStack.swift in Sources */,
 			);

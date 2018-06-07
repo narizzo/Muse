@@ -16,6 +16,8 @@ class MuseViewController: UIViewController {
   
   var collectionView: UICollectionView!
   let flowLayout = UICollectionViewFlowLayout()
+  let leftArrow = Arrow()
+  let rightArrow = Arrow()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,9 +31,12 @@ class MuseViewController: UIViewController {
     
     view.addSubview(collectionView)
     
+    view.addSubview(leftArrow)
+    view.addSubview(rightArrow)
+    rightArrow.setOrientation(to: .right)
+    
     layoutCollectionView()
-
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    setupBackgroundImage()
   }
   
   private func setupBarButtons() {
@@ -104,7 +109,8 @@ class MuseViewController: UIViewController {
     let spacing: CGFloat = 0.0
     flowLayout.minimumLineSpacing = spacing
     flowLayout.minimumInteritemSpacing = spacing
-    flowLayout.itemSize = UIScreen.main.bounds.size
+    //flowLayout.itemSize = // UIScreen.main.bounds.size
+    flowLayout.itemSize = CGSize(width: self.view.safeAreaLayoutGuide.layoutFrame.width, height: self.view.safeAreaLayoutGuide.layoutFrame.height - 64) // magic number for top bar height
     flowLayout.scrollDirection = .horizontal
   }
   
@@ -112,7 +118,7 @@ class MuseViewController: UIViewController {
     collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
     collectionView.delegate = self
     collectionView.dataSource = self
-    collectionView.isScrollEnabled = false
+    //collectionView.isScrollEnabled = false
   }
   
   private func registerCollectionCell() {
@@ -130,9 +136,30 @@ class MuseViewController: UIViewController {
       ])
   }
   
+  private func setupBackgroundImage() {
+    let imageView : UIImageView = {
+      let iv = UIImageView()
+      iv.image = UIImage(named: "background")
+      iv.contentMode = .scaleAspectFill
+      
+      iv.addBlurEffect()
+      return iv
+    }()
+    collectionView.backgroundView = imageView
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+}
+
+extension UIImageView {
+  func addBlurEffect() {
+    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    blurEffectView.frame = self.bounds
+    self.addSubview(blurEffectView)
   }
 }
 
@@ -145,14 +172,12 @@ extension MuseViewController: UICollectionViewDelegate {
 extension MuseViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if let count = selectedDeck.muses?.count {
-      print("number of items in section: \(count)")
       return count
     }
     return 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    print("cellForItemAt \(indexPath.row)")
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIDs.museCell, for: indexPath)
     if let museCell = cell as? MuseCollectionViewCell {
       // add auto unwrap functionality?
@@ -165,10 +190,10 @@ extension MuseViewController: UICollectionViewDataSource {
       guard let muse = muses[indexPath.row] as? Muse else {
         return museCell
       }
+      
+      // frost glass background with fuzzy pic of electronics n shit.
+      museCell.museLabel.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
       museCell.museLabel.text = muse.text
-      var color: UIColor!
-      indexPath.row % 2 == 0 ? (color = UIColor.lightGray) : (color = UIColor.darkGray)
-      museCell.museLabel.backgroundColor = color
       return museCell
     }
     return cell

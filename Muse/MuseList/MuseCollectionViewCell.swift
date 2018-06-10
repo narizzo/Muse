@@ -18,6 +18,9 @@ class MuseCollectionViewCell: UICollectionViewCell {
     museLabel.translatesAutoresizingMaskIntoConstraints = false
     
     contentView.addSubview(museLabel)
+    
+    //museLabel.sizeToFit() use this or constraints?
+    
     museLabel.textAlignment = .center
     
     activateConstraints()
@@ -38,6 +41,7 @@ class MuseCollectionViewCell: UICollectionViewCell {
   }
   
   private func setupMuseLabel() {
-    museLabel.font = museLabel.font.withSize(64)
+    //museLabel.font = museLabel.font.withSize(64)
+    museLabel.font = UIFont.boldSystemFont(ofSize: 64)
   }
 }

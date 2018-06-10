@@ -24,6 +24,11 @@ class MuseViewController: UIViewController {
     
     navigationItem.title = selectedDeck.name
     
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white]
+    navigationController?.navigationBar.backgroundColor = .clear
+    navigationController?.navigationBar.isTranslucent = true
+    navigationController?.navigationBar.barTintColor = .clear
+    
     setupBarButtons()
     setupFlowLayout()
     setupCollectionView()
@@ -37,6 +42,7 @@ class MuseViewController: UIViewController {
     
     layoutCollectionView()
     setupBackgroundImage()
+    setupBlurEffect()
   }
   
   private func setupBarButtons() {
@@ -110,7 +116,7 @@ class MuseViewController: UIViewController {
     flowLayout.minimumLineSpacing = spacing
     flowLayout.minimumInteritemSpacing = spacing
     //flowLayout.itemSize = // UIScreen.main.bounds.size
-    flowLayout.itemSize = CGSize(width: self.view.safeAreaLayoutGuide.layoutFrame.width, height: self.view.safeAreaLayoutGuide.layoutFrame.height - 64) // magic number for top bar height
+    flowLayout.itemSize = CGSize(width: self.view.safeAreaLayoutGuide.layoutFrame.width, height: self.view.safeAreaLayoutGuide.layoutFrame.height - 64) // magic number for top bar height, prevents scrollView from being larger than the screen size
     flowLayout.scrollDirection = .horizontal
   }
   
@@ -140,12 +146,37 @@ class MuseViewController: UIViewController {
     let imageView : UIImageView = {
       let iv = UIImageView()
       iv.image = UIImage(named: "background")
-      iv.contentMode = .scaleAspectFill
-      
-      iv.addBlurEffect()
+      iv.contentMode = .center
       return iv
     }()
     collectionView.backgroundView = imageView
+  }
+  
+  private func setupBlurEffect() {
+    let blur = UIBlurEffect(style: UIBlurEffectStyle.regular)
+    let blurView = UIVisualEffectView(effect: blur)
+    blurView.translatesAutoresizingMaskIntoConstraints = false
+    //collectionView.addSubview(blurView)
+    guard let backgroundView = collectionView.backgroundView else {
+      return
+    }
+    backgroundView.addSubview(blurView)
+    
+    NSLayoutConstraint.activate([
+      blurView.leadingAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.leadingAnchor),
+      blurView.topAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.topAnchor),
+      blurView.trailingAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.trailingAnchor),
+      blurView.bottomAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.bottomAnchor),
+      ])
+  }
+  
+  private func updateBackgroundPosition(at point: CGFloat, for width: CGFloat) {
+//    guard let backgroundView = collectionView.backgroundView else {
+//      return
+//    }
+//    if point >= width / 2.0 {
+//      backgroundView.bounds.origin = CGPoint(x: point, y: (backgroundView.bounds.origin.y))
+//    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -167,6 +198,11 @@ extension MuseViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     collectionView.deselectItem(at: indexPath, animated: false)
   }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    updateBackgroundPosition(at: scrollView.contentOffset.x, for: scrollView.bounds.width)
+  }
+
 }
 
 extension MuseViewController: UICollectionViewDataSource {
@@ -192,7 +228,7 @@ extension MuseViewController: UICollectionViewDataSource {
       }
       
       // frost glass background with fuzzy pic of electronics n shit.
-      museCell.museLabel.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
+      //museCell.museLabel.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
       museCell.museLabel.text = muse.text
       return museCell
     }

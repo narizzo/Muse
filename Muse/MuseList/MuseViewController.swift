@@ -45,6 +45,10 @@ class MuseViewController: UIViewController {
     setupBlurEffect()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+  }
+  
   private func setupBarButtons() {
     let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMuse))
     navigationItem.setRightBarButton(addBarButton, animated: true)
@@ -179,6 +183,46 @@ class MuseViewController: UIViewController {
 //    }
   }
   
+  private func snapToNearestCell() {
+    let cellWidth = collectionView.bounds.width
+    let x = collectionView.bounds.origin.x
+    let midX = collectionView.bounds.midX
+    let maxX = collectionView.bounds.maxX
+    
+    
+    print("cllectionView.bounds.width: \(cellWidth)")
+    print("current x: \(x)")
+    print("current midx: \(midX)")
+    print("current maxX: \(maxX)")
+    
+    var row: Int
+    var nextRow = 0
+    
+//    if x - midX <= cellWidth / 2.0 {
+//      row = Int(x / cellWidth)
+//    } else {
+//      row = Int((x + cellWidth) / cellWidth)
+//    }
+    
+    if x.truncatingRemainder(dividingBy: cellWidth) > cellWidth / 2.0 {
+      nextRow = 1
+    }
+    row = Int(x / cellWidth) + nextRow
+    
+    print("row: \(row)")
+    collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
+    
+    
+//    let visibleCells = collectionView.visibleCells
+//    print(visibleCells)
+//    let cell = visibleCells.last
+//
+//    let index = collectionView.indexPath(for: cell!)
+//    print(index)
+//
+//    collectionView.scrollToItem(at: index!, at: .centeredHorizontally, animated: true)
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -202,7 +246,16 @@ extension MuseViewController: UICollectionViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     updateBackgroundPosition(at: scrollView.contentOffset.x, for: scrollView.bounds.width)
   }
-
+  
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    snapToNearestCell()
+  }
+  
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    snapToNearestCell()
+    // if dragging speed is low -> snapToNearestCell
+    // if dragging speed is high -> add to scrollView acceleration
+  }
 }
 
 extension MuseViewController: UICollectionViewDataSource {

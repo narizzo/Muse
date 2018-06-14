@@ -11,6 +11,7 @@
 		0124B50F20C990BD0019528E /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124B50E20C990BD0019528E /* Arrow.swift */; };
 		01787FFA20BF27250043074F /* NSFRCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01787FF920BF27250043074F /* NSFRCDelegate.swift */; };
 		01787FFD20BF3D3B0043074F /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */; };
+		018394E520D17D6700D083FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 018394E420D17D6600D083FA /* Info.plist */; };
 		01BE538E20BA233F006C992F /* MuseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE538D20BA233F006C992F /* MuseTests.swift */; };
 		01BE539920BA233F006C992F /* MuseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE539820BA233F006C992F /* MuseUITests.swift */; };
 		01CCEF4120BDB3B6008FAEF9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCEF4020BDB3B6008FAEF9 /* Theme.swift */; };
@@ -49,8 +50,8 @@
 		0124B50E20C990BD0019528E /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		01787FF920BF27250043074F /* NSFRCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFRCDelegate.swift; sourceTree = "<group>"; };
 		01787FFC20BF3D3B0043074F /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
+		018394E420D17D6600D083FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Muse/Info.plist; sourceTree = SOURCE_ROOT; };
 		01BE537220BA233D006C992F /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muse.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		01BE538420BA233E006C992F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01BE538920BA233F006C992F /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Muse.app; path = MuseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BE538D20BA233F006C992F /* MuseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseTests.swift; sourceTree = "<group>"; };
 		01BE538F20BA233F006C992F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,13 +121,13 @@
 			isa = PBXGroup;
 			children = (
 				01D1FB2520BC804C00A6C400 /* AppDelegate.swift */,
+				018394E420D17D6600D083FA /* Info.plist */,
 				01D1FB1720BC804C00A6C400 /* Data Model */,
 				01D1FB1B20BC804C00A6C400 /* Login */,
 				01D1FB1D20BC804C00A6C400 /* Muse Deck List */,
 				01D1FB1520BC804C00A6C400 /* MuseList */,
 				01D1FB1F20BC804C00A6C400 /* Project Files */,
 				01D1FB1020BC803900A6C400 /* Accessory */,
-				01BE538420BA233E006C992F /* Info.plist */,
 			);
 			path = Muse;
 			sourceTree = "<group>";
@@ -312,6 +313,7 @@
 			files = (
 				01D1FB2C20BC804C00A6C400 /* LaunchScreen.storyboard in Resources */,
 				01D1FB2B20BC804C00A6C400 /* Assets.xcassets in Resources */,
+				018394E520D17D6700D083FA /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

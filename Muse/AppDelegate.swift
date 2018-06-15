@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       signInVC.coreDataStack = coreDataStack
     }
     listenForFatalCoreDataNotifications()
+    
+    FirebaseApp.configure()
     
     return true
   }

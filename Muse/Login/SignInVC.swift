@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class SignInVC: UIViewController {
   
   weak var coreDataStack: CoreDataStack!
   private var museLabel = UILabel()
+  
   private var usernameField = UITextField()
   private var passwordField = UITextField()
+  
   private var signInButton = UIButton()
   private var createAccountButton = UIButton()
   private var skipSignInButton = UIButton()
@@ -37,6 +41,7 @@ class SignInVC: UIViewController {
     setupForgotCredentialsButton()
   }
   
+  // MARK: - Setup UI
   private func setupMuseLabel() {
     museLabel.text = "Muse"
     museLabel.textAlignment = .center
@@ -61,6 +66,7 @@ class SignInVC: UIViewController {
   }
   
   private func setupSignInButton() {
+    //signInButton.isEnabled = false
     signInButton.setTitle("Sign In", for: .normal)
     signInButton.titleLabel?.textAlignment = .center
     signInButton.titleLabel?.font = signInButton.titleLabel?.font.withSize(35)
@@ -103,16 +109,7 @@ class SignInVC: UIViewController {
     forgotCredentialsButton.addTarget(self, action: #selector(forgotCredentials), for: .touchUpInside)
   }
   
-  private func turnOffMasksForUIObjects() {
-    museLabel.translatesAutoresizingMaskIntoConstraints = false
-    usernameField.translatesAutoresizingMaskIntoConstraints = false
-    passwordField.translatesAutoresizingMaskIntoConstraints = false
-    signInButton.translatesAutoresizingMaskIntoConstraints = false
-    createAccountButton.translatesAutoresizingMaskIntoConstraints = false
-    skipSignInButton.translatesAutoresizingMaskIntoConstraints = false
-    forgotCredentialsButton.translatesAutoresizingMaskIntoConstraints = false
-  }
-  
+  // MARK: - Subviews
   private func addSubviews() {
     self.view.addSubview(museLabel)
     self.view.addSubview(usernameField)
@@ -123,6 +120,18 @@ class SignInVC: UIViewController {
     self.view.addSubview(forgotCredentialsButton)
   }
   
+  // MARK: - UI Masks
+  private func turnOffMasksForUIObjects() {
+    museLabel.translatesAutoresizingMaskIntoConstraints = false
+    usernameField.translatesAutoresizingMaskIntoConstraints = false
+    passwordField.translatesAutoresizingMaskIntoConstraints = false
+    signInButton.translatesAutoresizingMaskIntoConstraints = false
+    createAccountButton.translatesAutoresizingMaskIntoConstraints = false
+    skipSignInButton.translatesAutoresizingMaskIntoConstraints = false
+    forgotCredentialsButton.translatesAutoresizingMaskIntoConstraints = false
+  }
+  
+  // MARK: - Constraints
   private func activateConstraints() {
     NSLayoutConstraint.activate([
       self.museLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60),
@@ -163,8 +172,18 @@ class SignInVC: UIViewController {
   }
   
   
+  // MARK: - Button Calls
   @objc private func signIn() {
-    showDeckTableVC()
+    if let email = usernameField.text, let password = passwordField.text {
+      Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        if error != nil {
+          print("failed to sign in: \(error)")
+        } else {
+          print("signed in")
+          self.showDeckTableVC()
+        }
+      }
+    }
   }
   
   @objc private func createAccount() {

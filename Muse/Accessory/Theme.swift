@@ -27,6 +27,12 @@ class Theme {
     }
   }
   
+  class fontSizes {
+    class func textFieldDefault() -> CGFloat {
+      return 23
+    }
+  }
+  
   class colors {
     static let lightGray = UIColor.lightGray
   }

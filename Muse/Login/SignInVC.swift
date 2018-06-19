@@ -13,7 +13,9 @@ import FirebaseDatabase
 class SignInVC: UIViewController {
   
   weak var coreDataStack: CoreDataStack!
+  
   private var museLabel = UILabel()
+  private var signInErrorLabel = UILabel()
   
   private var usernameField = UITextField()
   private var passwordField = UITextField()
@@ -31,8 +33,26 @@ class SignInVC: UIViewController {
     turnOffMasksForUIObjects()
     addSubviews()
     activateConstraints()
-    
+  
+    setupUI()
+  }
+  
+  // MARK: - UI Masks
+  private func turnOffMasksForUIObjects() {
+    museLabel.translatesAutoresizingMaskIntoConstraints = false
+    signInErrorLabel.translatesAutoresizingMaskIntoConstraints = false
+    usernameField.translatesAutoresizingMaskIntoConstraints = false
+    passwordField.translatesAutoresizingMaskIntoConstraints = false
+    signInButton.translatesAutoresizingMaskIntoConstraints = false
+    createAccountButton.translatesAutoresizingMaskIntoConstraints = false
+    skipSignInButton.translatesAutoresizingMaskIntoConstraints = false
+    forgotCredentialsButton.translatesAutoresizingMaskIntoConstraints = false
+  }
+  
+  // MARK: - Setup UI
+  private func setupUI() {
     setupMuseLabel()
+    setupSignInErrorLabel()
     setupUsernameField()
     setupPasswordField()
     setupSignInButton()
@@ -41,28 +61,39 @@ class SignInVC: UIViewController {
     setupForgotCredentialsButton()
   }
   
-  // MARK: - Setup UI
   private func setupMuseLabel() {
     museLabel.text = "Muse"
     museLabel.textAlignment = .center
     museLabel.font = museLabel.font.withSize(64)
   }
   
+  private func setupSignInErrorLabel() {
+    signInErrorLabel.adjustsFontSizeToFitWidth = true
+    signInErrorLabel.textColor = UIColor.red
+    signInErrorLabel.font = signInErrorLabel.font.withSize(20)
+    signInErrorLabel.isHidden = true
+  }
+  
   private func setupUsernameField() {
-    usernameField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: Theme.colors.lightGray])
+    usernameField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: Theme.colors.lightGray])
+    
+    /* will get back to this... custom inset for text and placeholder text -> make custom textField */
+    //usernameField.textRect(forBounds: UIEdgeInsetsInsetRect(usernameField.bounds, UIEdgeInsetsMake(0, 15, 0, 15)))
+    //usernameField.placeholderRect(forBounds: UIEdgeInsetsInsetRect(usernameField.bounds, UIEdgeInsetsMake(0, 15, 0, 15)))
+    
     usernameField.backgroundColor = UIColor.orange
     usernameField.returnKeyType = .next
     usernameField.textColor = UIColor.black
-    usernameField.font = usernameField.font?.withSize(30)
+    usernameField.font = usernameField.font?.withSize(23)
   }
   
   private func setupPasswordField() {
-    passwordField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: Theme.colors.lightGray])
+    passwordField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: Theme.colors.lightGray])
     passwordField.isSecureTextEntry = true
     passwordField.backgroundColor = UIColor.orange
     passwordField.returnKeyType = .done
     passwordField.textColor = UIColor.black
-    passwordField.font = usernameField.font?.withSize(30)
+    passwordField.font = usernameField.font?.withSize(23)
   }
   
   private func setupSignInButton() {
@@ -112,23 +143,13 @@ class SignInVC: UIViewController {
   // MARK: - Subviews
   private func addSubviews() {
     self.view.addSubview(museLabel)
+    self.view.addSubview(signInErrorLabel)
     self.view.addSubview(usernameField)
     self.view.addSubview(passwordField)
     self.view.addSubview(signInButton)
     self.view.addSubview(createAccountButton)
     self.view.addSubview(skipSignInButton)
     self.view.addSubview(forgotCredentialsButton)
-  }
-  
-  // MARK: - UI Masks
-  private func turnOffMasksForUIObjects() {
-    museLabel.translatesAutoresizingMaskIntoConstraints = false
-    usernameField.translatesAutoresizingMaskIntoConstraints = false
-    passwordField.translatesAutoresizingMaskIntoConstraints = false
-    signInButton.translatesAutoresizingMaskIntoConstraints = false
-    createAccountButton.translatesAutoresizingMaskIntoConstraints = false
-    skipSignInButton.translatesAutoresizingMaskIntoConstraints = false
-    forgotCredentialsButton.translatesAutoresizingMaskIntoConstraints = false
   }
   
   // MARK: - Constraints
@@ -139,10 +160,15 @@ class SignInVC: UIViewController {
       self.museLabel.widthAnchor.constraint(equalToConstant: 200),
       self.museLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
       
-      self.usernameField.topAnchor.constraint(equalTo: self.museLabel.bottomAnchor, constant: 50),
+      self.signInErrorLabel.topAnchor.constraint(equalTo: self.museLabel.bottomAnchor, constant: 38),
+      self.signInErrorLabel.heightAnchor.constraint(equalToConstant: 40),
+      self.signInErrorLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 4/5),
+      self.signInErrorLabel.centerXAnchor.constraint(equalTo: self.museLabel.centerXAnchor),
+      
+      self.usernameField.topAnchor.constraint(equalTo: self.signInErrorLabel.bottomAnchor, constant: 8),
       self.usernameField.heightAnchor.constraint(equalToConstant: 44),
       self.usernameField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 4/5),
-      self.usernameField.centerXAnchor.constraint(equalTo: self.museLabel.centerXAnchor),
+      self.usernameField.centerXAnchor.constraint(equalTo: self.signInErrorLabel.centerXAnchor),
       
       self.passwordField.topAnchor.constraint(equalTo: self.usernameField.bottomAnchor, constant: 12),
       self.passwordField.heightAnchor.constraint(equalToConstant: 44),
@@ -174,10 +200,16 @@ class SignInVC: UIViewController {
   
   // MARK: - Button Calls
   @objc private func signIn() {
+    // start test code
+    usernameField.text = "nrizzo414@gmail.com"
+    passwordField.text = "myfakepassword"
+    // end test code
+    
     if let email = usernameField.text, let password = passwordField.text {
       Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
         if error != nil {
           print("failed to sign in: \(error)")
+          self.showSignInError()
         } else {
           print("signed in")
           self.showDeckTableVC()
@@ -186,8 +218,23 @@ class SignInVC: UIViewController {
     }
   }
   
+  private func showSignInError() {
+    signInErrorLabel.text = "Invalid username or password"
+    signInErrorLabel.isHidden = false
+  }
+  
   @objc private func createAccount() {
-    showDeckTableVC()
+    if let email = usernameField.text, let password = passwordField.text {
+      Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+        if error != nil {
+          print("failed to create new account: \(error)")
+          self.showSignInError()
+        } else {
+          print("Created an account")
+          self.showDeckTableVC()
+        }
+      }
+    }
   }
   
   @objc private func skipSignIn() {
